@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-<body>
-<script>
+
 var trails = [{
   "Name" : "Monivea - Mass Track Trail",
   "Category" : "Walking/Hiking Trail",
@@ -33,6 +30,3 @@ var trails = [{
 
 
   }
-  </body>
-  </html>
-  </script>
