@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var trails = [{
+  "Name" : "Monivea - Mass Track Trail",
+  "Category" : "Walking/Hiking Trail",
+  "Lenght" : "1.50km" ,
+  "Grade" : "Moderate",
+  "Estimated Time" : "1 Hour",
+},
+  {
+    "Name" : "Derroura",
+    "Category" : "Mountain Bike Trail",
+    "Lenght" : "16.00km" ,
+    "Grade" : "Serve",
+    "Estimated Time" : "2 Hour 20 min",
+  },
+  {
+    "Name": "Oranmore Sli",
+    "Category": "Casual walk",
+    "Lenght": "4.80",
+    "Grade": "Easy",
+    "Estimated Time": "40 Min",
+  },
+
+  {
+    "Name" : "Mervue Sli",
+    "Category" :"Casual Walk",
+    "Lenght" : "2.6 km",
+    "Grade" : "Easy",
+    "Estimated Time": "40 Min",
+
+
+  }
+  </body>
+  </html>
+  </script>
