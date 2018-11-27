@@ -8,6 +8,10 @@ var placesSchema = new Schema({
     Grade: {type: String},
     EstimatedTime: {type: String},
     Likes: {type: String},
-    NumberOfImage: {type: Number}
+    NumberOfImage: {type: Number},
+    MapLongitude: {type: float},
+    MapLatitude: {type: float},
+    MarkerLongitude: {type: float},
+    MarkerLatitude: {type: float}
 });
 module.exports = mongoose.model('Places', placesSchema);
