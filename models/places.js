@@ -7,6 +7,7 @@ var placesSchema = new Schema({
     Length: {type: String},
     Grade: {type: String},
     EstimatedTime: {type: String},
-    Likes: {type: String}
+    Likes: {type: String},
+    NumberOfImage: {type: Number}
 });
 module.exports = mongoose.model('Places', placesSchema);
