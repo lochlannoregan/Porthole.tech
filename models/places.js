@@ -9,9 +9,9 @@ var placesSchema = new Schema({
     EstimatedTime: {type: String},
     Likes: {type: String},
     NumberOfImage: {type: Number},
-    MapLongitude: {type: float},
-    MapLatitude: {type: float},
-    MarkerLongitude: {type: float},
-    MarkerLatitude: {type: float}
+    MapLongitude: {type: Number},
+    MapLatitude: {type: Number},
+    MarkerLongitude: {type: Number},
+    MarkerLatitude: {type: Number}
 });
 module.exports = mongoose.model('Places', placesSchema);

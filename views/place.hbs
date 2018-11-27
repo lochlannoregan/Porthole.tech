@@ -18,6 +18,18 @@
         <li class="list-group-item">
             <div>{{place.Likes}}</div>
         </li>
+        <li class="list-group-item">
+            <div>{{place.MapLatitude}}</div>
+        </li>
+        <li class="list-group-item">
+            <div>{{place.MapLongitude}}</div>
+        </li>
+        <li class="list-group-item">
+            <div>{{place.MarkerLatitude}}</div>
+        </li>
+        <li class="list-group-item">
+            <div>{{place.MarkerLongitude}}</div>
+        </li>
     </ul>
 </div>
 
@@ -28,5 +40,14 @@
                 <a-sky src='/images/national_park_{{place.NumberOfImage}}.jpg'></a-sky>
             </a-scene></body></html>"></iframe>
 </div>
+
+<div class="container" align="center">
+
+    <div id="mapid" style="width: 80%; height: 600px;"></div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+<script src="javascripts/map.js"></script>
 
 
