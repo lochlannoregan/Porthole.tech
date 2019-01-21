@@ -1,12 +1,33 @@
-<div class="container">
-    <div class="embed-responsive embed-responsive-4by3">
-        <iframe allowfullscreen="yes" scrolling="no" allowvr="yes"
-                srcdoc="<html><head><script src='https://aframe.io/releases/0.8.0/aframe.min.js'></script></head><body>
-                <a-scene>
-                <a-sky src='/images/national_park_2.jpg'></a-sky>
-            </a-scene></body></html>"></iframe>
-    </div>
-    <div class="row justify-content-center">
-        <a id="whereamIbutton" class="btn btn-primary" href="/place" role="button">Where am I?</a>
-    </div>
+
+<div class="col-md-8 col-md-offset-2">
+    <h2>Login</h2>
+    <form class="form-horizontal" role="form" id="log-form">
+        <div class="form-group mt">
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="col-sm-3">
+                    <label for="inputUsername" class="control-label">Username</label>
+                </div>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control input-lg required" id="inputUsername" placeholder="@username">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="col-sm-3">
+                    <label for="inputPassword" class="control-label">Password</label>
+                </div>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control input-lg required" id="inputPassword"
+                           placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-sm-offset-2 col-sm-10 mt">
+                    <button type="submit" class="btn btn-warning btn-lg">Login</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
+

@@ -7,10 +7,9 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/gorumna-island', function(req, res, next) {
-    res.render('gorumna-island');
+router.get('/dashboard', function(req, res, next) {
+  res.render('dashboard');
 });
-
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
