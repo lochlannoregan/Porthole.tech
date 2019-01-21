@@ -10,16 +10,3 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 
 L.marker([53.2655, -9.6545]).addTo(mymap)
 .bindPopup("<b>Gorumna Island view</b><br />Beautiful view of the peaceful ocean.").openPopup();
-
-
-
-var popup = L.popup();
-
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(mymap);
-}
-
-mymap.on('click', onMapClick);
