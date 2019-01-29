@@ -1,21 +1,17 @@
 <br>
-<div class="container">
+<div class="container" id="placeDiv">
     <p class="text-center">Go back to your favourite places</p>
 
-    <h4>Carraroe Beach</h4>
-    <a href="placePage.hbs" id="userImage" onclick="document.location=this.id+'.hbs';return false;">
-
-        <img src="https://media-cdn.tripadvisor.com/media/photo-s/0e/0b/90/50/nice-views.jpg" class="img-fluid" href ="/users/login" alt="Responsive image" alt="userImages">
+    <a id="userData" href = "#" onclick="placeData()";return false;>
+        <img src = '/images/national_park_{{place.NumberOfImage}}.jpg' height="100" width="100" class="img-fluid" alt="Responsive image" >
+    <h4>{{place.Name}}</h4>
     </a>
-
-        <br>
+<br>
     <br>
-    <br>
-    <h4>New York</h4>
-    <img src="https://static1.squarespace.com/static/571e6c6e07eaa0e5ddb025e2/t/5729f1bf7c65e4a699db3218/1462366666215/tumblr_mn8b8sLRb61rkz363o1_1280.jpg"  class="img-fluid" href="/accountPage" alt="Responsive image">
-
+    <div class = "placeDiv"></div>
 
     <div class="row justify-content-center">
         <a id="whereamIbutton" class="btn btn-primary" href="/place" role="button">Where am I?</a>
     </div>
 
+</div>
