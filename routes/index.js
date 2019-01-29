@@ -18,16 +18,17 @@ router.get('/placePage', function (req, res, next) {
 router.get('/dashboard', function(req, res, next) {
 
 
-
     try {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
+
             Place.find({}, function(err, places)
             {
                 res.render('dashboard', { place: places[1] });
 
             });
+
 
             //res.render('dashboard');
         }
