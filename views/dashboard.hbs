@@ -1,11 +1,12 @@
 <br>
 <div class="container" id="placeDiv">
     <p class="text-center">Go back to your favourite places</p>
-
-    <a id="userData" href = "/placePage" >
-        <img src = '/images/national_park_{{place.NumberOfImage}}.jpg' height="100" width="100" class="img-fluid" alt="Responsive image" >
-    <h4>{{place.Name}}</h4>
+{{#each place}}
+    <a id="userData" href = "/placePage/{{_id}}" >
+        <img src = '/images/national_park_{{NumberOfImage}}.jpg' height="100" width="100" class="img-fluid" alt="Responsive image" >
+    <h4>{{Name}}</h4>
     </a>
+{{/each}}
 <br>
     <br>
     <div class = "placeDiv"></div>
