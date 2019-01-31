@@ -1,3 +1,4 @@
+if (window.location.pathname == "/place"){
 
 var lat = document.getElementById("lat").innerHTML;
 var long = document.getElementById("long").innerHTML;
@@ -13,6 +14,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 L.marker([lat, long]).addTo(mymap)
     .bindPopup('' + main + '<br> '+ grade +'')
     .openPopup();
-
+}
+else{};
 
 
