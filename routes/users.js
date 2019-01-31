@@ -11,6 +11,8 @@ router.get('/login', function (req, res, next) {
   res.render('login');
 });
 
+
+
 // Compares passwords to determine if the user is who they say they are
 router.post('/register', function (req, res, next) {
   var username = req.body.user_name;

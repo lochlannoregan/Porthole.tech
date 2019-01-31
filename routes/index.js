@@ -7,13 +7,30 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get('/placePage/:id', function (req, res, next) {
+
+    Place.find({_id:req.params.id}, function(err, places)
+    {
+
+        res.render('place', { place: places[0] });
+
+    });
+});
+
 router.get('/dashboard', function(req, res, next) {
+
 
     try {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
-            res.render('dashboard');
+
+            Place.find({}, function(err, places)
+            {
+                res.render('dashboard', { place: places });
+
+            });
+
         }
     }catch (err) {
         res.json({

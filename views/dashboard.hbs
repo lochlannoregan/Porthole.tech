@@ -1,14 +1,18 @@
 <br>
-<div class="container">
-    <div class="embed-responsive embed-responsive-4by3">
-        <iframe allowfullscreen="yes" scrolling="no" allowvr="yes"
-                srcdoc="<html><head><script src='https://aframe.io/releases/0.8.0/aframe.min.js'></script></head><body>
-                    <a-scene>
-                        <a-sky src='/images/national_park_2.jpg'></a-sky>
-                    </a-scene></body></html>">
-        </iframe>
-    </div>
+<div class="container" id="placeDiv">
+    <p class="text-center">Go back to your favourite places</p>
+{{#each place}}
+    <a id="userData" href = "/placePage/{{_id}}" >
+        <img src = '/images/national_park_{{NumberOfImage}}.jpg' height="100" width="100" class="img-fluid" alt="Responsive image" >
+    <h4>{{Name}}</h4>
+    </a>
+{{/each}}
+<br>
+    <br>
+    <div class = "placeDiv"></div>
+
     <div class="row justify-content-center">
         <a id="whereamIbutton" class="btn btn-primary" href="/place" role="button">Where am I?</a>
     </div>
+
 </div>
