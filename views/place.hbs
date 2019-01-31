@@ -20,18 +20,11 @@
         <li class="list-group-item">
             <div>{{place.Likes}}</div>
         </li>
-        <li class="list-group-item">
-            <div id="lat">{{place.MapLatitude}}</div>
-        </li>
-        <li class="list-group-item">
-            <div id="long">{{place.MapLongitude}}</div>
-        </li>
-        <li class="list-group-item">
-            <div>{{place.MarkerLatitude}}</div>
-        </li>
-        <li class="list-group-item">
-            <div>{{place.MarkerLongitude}}</div>
-        </li>
+            <div id="lat" style="visibility: hidden; display:inline;">{{place.MapLatitude}}</div>
+            <div id="long" style="visibility: hidden; display:inline;">{{place.MapLongitude}}</div>
+            <div style="visibility: hidden; display:inline;">{{place.MarkerLatitude}}</div>
+            <div style="visibility: hidden; display:inline;">{{place.MarkerLongitude}}</div>
+
     </ul>
 </div>
 <br>
