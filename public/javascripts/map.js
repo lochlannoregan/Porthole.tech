@@ -1,4 +1,6 @@
+
 if (window.location.pathname == "/place"){
+
 
 var lat = document.getElementById("lat").innerHTML;
 var long = document.getElementById("long").innerHTML;
