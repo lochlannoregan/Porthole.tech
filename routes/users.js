@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/users');
+var Place = require('../models/places')
 var jwt = require('jsonwebtoken');
 
 router.get('/register', function (req, res, next) {
@@ -45,6 +46,38 @@ router.post('/register', function (req, res, next) {
     }
   });
 });
+
+router.post('/addPlace', function (req, res, next) {
+  var name = req.body.Name;
+  var category = req.body.Category;
+  var length = req.body.Length;
+  var grade = req.body.Grade;
+  var estimatedTime = req.body.EstimatedTime;
+  var likes = req.body.Likes;
+  var numberOfImage = req.body.NumberOfImage;
+  var mapLongitude = req.body.MapLongitude;
+  var mapLatitude = req.body.MapLatitude;
+  var markerLongitude = req.body.MarkerLongitude;
+  var markerLatitude = req.body.MarkerLatitude;
+
+  if(err)
+    res.send(err);
+  else {
+    var newPlace = new Place();
+    
+    newPlace.save(function (err, savedPlace) {
+      if (err)
+        throw err;
+      res.json({
+        "id": savedPlace._id
+      });
+    })
+
+  }
+
+
+
+})
 
 function createJwt(profile) {
   return jwt.sign(profile, 'CSIsTheWorst', {
