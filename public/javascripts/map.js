@@ -1,5 +1,5 @@
 
-if (window.location.pathname == "/place"){
+if (window.location.pathname.includes("/placePage")){
 
 
 var lat = document.getElementById("lat").innerHTML;
@@ -17,6 +17,5 @@ L.marker([lat, long]).addTo(mymap)
     .bindPopup('' + main + '<br> '+ grade +'')
     .openPopup();
 }
-else{};
 
 
