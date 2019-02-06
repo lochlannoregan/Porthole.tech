@@ -8,17 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/placePage/:id', function (req, res, next) {
-
-    Place.find({_id:req.params.id}, function(err, places)
+    Place.findOne({_id:req.params.id}, function(err, placeSelected)
     {
-
-        res.render('place', { place: places[0] });
-
+        res.render('place', { place: placeSelected });
     });
 });
 
 router.get('/dashboard', function(req, res, next) {
-
 
     try {
         var jwtString = req.cookies.Authorization.split(" ");
