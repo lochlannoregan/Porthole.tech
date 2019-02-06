@@ -1,12 +1,21 @@
-var mymap = L.map('mapid').setView([53.26, -9.67], 12);
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox.streets'
+if (window.location.pathname.includes("/placePage")){
+
+
+var lat = document.getElementById("lat").innerHTML;
+var long = document.getElementById("long").innerHTML;
+var main = document.getElementById("name").innerHTML
+var grade = document.getElementById("grade").innerHTML;
+
+var mymap = L.map('mapid').setView([lat, long], 12);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(mymap);
 
-L.marker([53.2655, -9.6545]).addTo(mymap)
-.bindPopup("<b>Gorumna Island view</b><br />Beautiful view of the peaceful ocean.").openPopup();
+L.marker([lat, long]).addTo(mymap)
+    .bindPopup('' + main + '<br> '+ grade +'')
+    .openPopup();
+}
+
+
