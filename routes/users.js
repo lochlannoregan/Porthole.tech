@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../models/users');
 var Place = require('../models/places')
 var jwt = require('jsonwebtoken');
+var multer = require('multer')
 
 router.get('/register', function (req, res, next) {
     res.render('register');
@@ -12,6 +13,22 @@ router.get('/login', function (req, res, next) {
     res.render('login');
 });
 
+router.get('/uploadimage', function (req, res, next) {
+    res.render('uploadimage');
+});
+
+router.post('/uploadimagetesting', upload.single('image'), function(req,res){
+    if (req.fileValidationError) {
+        return res.end('file validation error?')
+
+    }
+    console.log(req.body)
+    if (req.file) {
+        console.log(req.file);
+        return res.end('Thank you for the file');
+    }
+    res.end('Missing file');
+});
 
 // Compares passwords to determine if the user is who they say they are
 router.post('/register', function (req, res, next) {
