@@ -119,4 +119,4 @@ fabric.properties
 .idea/encodings.xml
 
 ### Don't include store of images in the upload when testing
-/public/images/uploads/*.jpg
+/public/images/uploads
