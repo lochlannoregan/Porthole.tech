@@ -80,29 +80,19 @@ router.post('/fileUpload', upload.single('image'), (req, res, next) => {
 
 router.post('/addPlace', function (req, res, next) {
     var name = req.body.Name;
-    var category = req.body.Category;
-    var length = req.body.Length;
-    var grade = req.body.Grade;
-    var estimatedTime = req.body.EstimatedTime;
-    var likes = req.body.Likes;
-    var numberOfImage = req.body.NumberOfImage;
-    var mapLongitude = req.body.MapLongitude;
-    var mapLatitude = req.body.MapLatitude;
-    var markerLongitude = req.body.MarkerLongitude;
-    var markerLatitude = req.body.MarkerLatitude;
+    var description = req.body.Description;
+    var imageLocation = req.body.ImageLocation;
+    var soundLocation = req.body.SoundLocation;
+    var latitude = req.body.Latitude;
+    var longitude = req.body.Longitude;
 
     var newPlace = new Place();
     newPlace.Name = name;
-    newPlace.Category = category;
-    newPlace.Length = length;
-    newPlace.Grade = grade;
-    newPlace.EstimatedTime = estimatedTime;
-    newPlace.Likes = likes;
-    newPlace.NumberOfImage = numberOfImage;
-    newPlace.MapLongitude = mapLongitude;
-    newPlace.MapLatitude = mapLatitude;
-    newPlace.MarkerLongitude = markerLongitude;
-    newPlace.MarkerLatitude = markerLatitude;
+    newPlace.Description = description;
+    newPlace.ImageLocation = imageLocation;
+    newPlace.SoundLocation = soundLocation;
+    newPlace.Latitude = latitude;
+    newPlace.Longitude = longitude;
 
     newPlace.save(function (err, savedPlace) {
         if (err)
@@ -111,7 +101,6 @@ router.post('/addPlace', function (req, res, next) {
             "id": savedPlace._id
         });
     })
-
 
 })
 

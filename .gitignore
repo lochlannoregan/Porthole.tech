@@ -120,3 +120,7 @@ fabric.properties
 
 ### Don't include store of images in the upload when testing
 /public/images/uploads
+
+!/public/images/uploads/national_park_1.jpg
+!/public/images/uploads/national_park_2.jpg
+!/public/images/uploads/national_park_3.jpg
