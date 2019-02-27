@@ -64,9 +64,11 @@ router.post('/addPlace', function (req, res, next) {
     newPlace.save(function (err, savedPlace) {
         if (err)
             throw err;
-        res.json({
-            "id": savedPlace._id
-        });
+        // console.log(res.json({
+        //     "id": savedPlace._id
+        // }))
+        // Should this be send back somewhere else?
+        res.redirect("/dashboard");
     })
 
 })

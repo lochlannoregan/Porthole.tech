@@ -13,6 +13,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(mymap);
 
 L.marker([lat, long]).addTo(mymap)
-    .bindPopup('' + main + '<br> '+ grade +'')
+    .bindPopup('' + main + '<br> '+ '')
     .openPopup();
 }
