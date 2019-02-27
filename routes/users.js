@@ -3,10 +3,6 @@ var router = express.Router();
 var User = require('../models/users');
 var Place = require('../models/places')
 var jwt = require('jsonwebtoken');
-var MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
-var url = 'mongodb://mongodb4670hj:lo0veq@danu7.it.nuigalway.ie:8717/mongodb4670';
-var multer = require('multer');
 
 router.get('/register', function (req, res, next) {
     res.render('register');
@@ -46,35 +42,6 @@ router.post('/register', function (req, res, next) {
 
             });
         }
-    });
-});
-
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/images/uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
-
-var upload = multer({storage: storage});
-
-var insertDocuments = function(db, filePath, callback) {
-    var collection = db.collection('images');
-    collection.insertOne({'imagePath' : filePath }, (err, result) => {
-        assert.equal(err, null);
-        callback(result);
-    });
-}
-
-router.post('/fileUpload', upload.single('image'), (req, res, next) => {
-    MongoClient.connect(url, (err, db) => {
-        assert.equal(null, err);
-        insertDocuments(db, 'public/images/uploads/' + req.file.filename, () => {
-            db.close();
-            res.json({'message': 'File uploaded successfully'});
-        });
     });
 });
 
