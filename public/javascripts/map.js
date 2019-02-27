@@ -1,11 +1,10 @@
 
-if (window.location.pathname.includes("/placePage")){
+if (window.location.pathname.includes("/placePage") || window.location.pathname.includes("/place")){
 
 
 var lat = document.getElementById("lat").innerHTML;
 var long = document.getElementById("long").innerHTML;
 var main = document.getElementById("name").innerHTML
-var grade = document.getElementById("grade").innerHTML;
 
 var mymap = L.map('mapid').setView([lat, long], 12);
 
@@ -14,8 +13,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(mymap);
 
 L.marker([lat, long]).addTo(mymap)
-    .bindPopup('' + main + '<br> '+ grade +'')
+    .bindPopup('' + main + '<br> '+ '')
     .openPopup();
 }
-
-
