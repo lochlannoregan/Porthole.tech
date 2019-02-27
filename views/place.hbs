@@ -6,37 +6,33 @@
             <div id="name">{{place.Name}}</div>
         </li>
         <li class="list-group-item">
-            <div>{{place.Category}}</div>
+            <div>{{place.Description}}</div>
         </li>
-        <li class="list-group-item">
-            <div>{{place.Length}}</div>
-        </li>
-        <li class="list-group-item">
-            <div id="grade">{{place.Grade}}</div>
-        </li>
-        <li class="list-group-item">
-            <div>{{place.EstimatedTime}}</div>
-        </li>
-        <li class="list-group-item">
-            <div>{{place.Likes}}</div>
-        </li>
-            <div id="lat">{{place.MapLatitude}}</div>
-            <div id="long" >{{place.MapLongitude}}</div>
-            <div id="hide">{{place.MarkerLatitude}}</div>
-            <div id="hide">{{place.MarkerLongitude}}</div>
-            <div id="lat" style="visibility: hidden; display:inline;">{{place.MapLatitude}}</div>
-            <div id="long" style="visibility: hidden; display:inline;">{{place.MapLongitude}}</div>
-            <div style="visibility: hidden; display:inline;">{{place.MarkerLatitude}}</div>
-            <div style="visibility: hidden; display:inline;">{{place.MarkerLongitude}}</div>
+            <div id="lat">{{place.Latitude}}</div>
+            <div id="long" >{{place.Longitude}}</div>
+            <div id="hide">{{place.Latitude}}</div>
+            <div id="hide">{{place.Longitude}}</div>
+            <div id="lat" style="visibility: hidden; display:inline;">{{place.Latitude}}</div>
+            <div id="long" style="visibility: hidden; display:inline;">{{place.Longitude}}</div>
+            <div style="visibility: hidden; display:inline;">{{place.Latitude}}</div>
+            <div style="visibility: hidden; display:inline;">{{place.Longitude}}</div>
 
     </ul>
 </div>
 <br>
+
+<audio controls>
+    <source src="{{place.SoundLocation}}.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<br>
+
 <div class="embed-responsive embed-responsive-4by3">
     <iframe allowfullscreen="yes" scrolling="no" allowvr="yes"
             srcdoc="<html><head><script src='https://aframe.io/releases/0.8.0/aframe.min.js'></script></head><body>
                     <a-scene>
-                        <a-sky src='/images/national_park_{{place.NumberOfImage}}.jpg'></a-sky>
+                        <a-sky src='{{place.ImageLocation}}.jpg'></a-sky>
                     </a-scene></body></html>">
     </iframe>
 </div>
