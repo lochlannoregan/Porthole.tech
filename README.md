@@ -1,4 +1,4 @@
-### <p align="center"><img width="150px" height="150px" src="https://drive.google.com/open?id=1RMVdLhFIi8MZMabZVY2YJVsv0IqtSajo"></p>
+### <p align="center"><img width="150px" height="150px" src="github.com/lochlannoregan/PersonalLocationCapture/porthole.dev-logo.png"></p>
 
 # [Porthole](https://porthole.dev/)
 
@@ -51,18 +51,18 @@ CSS
 jQuery
 
 # Authors 
-*Joshua Mwenya
-*Lochlann O regan
-*Benas Pakonis
-*Mark Burnell
-*Jarlath Healy
+* Joshua Mwenya
+* Lochlann O regan
+* Benas Pakonis
+* Mark Burnell
+* Jarlath Healy
 
 # License 
 This project is licensed under the MIT License see the see the [LICENSE.md](LICENSE.md) file for details
 
 # Acknowledgments
-*Dr. Enda Barrett - In Guidance and support
-*Polarsteps - coneptual inspirations
+* Dr. Enda Barrett - In Guidance and support
+* Polarsteps - coneptual inspirations
 
 <div align="center">
   <sub>If you found a bug or some improvments, feel free to raise an issue and send a PR!</sub>
