@@ -1,4 +1,4 @@
-### <p align="center"><img width="400px" height="112px"  src="https://github.com/lochlannoregan/PersonalLocationCapture/blob/5eb7f092fe1c7fdd074424d428580b5afd1d23b1/porthole.dev-logo.png"></p>
+### <p align="center"><img width="800px" height="325px"  src="https://github.com/lochlannoregan/PersonalLocationCapture/blob/5eb7f092fe1c7fdd074424d428580b5afd1d23b1/porthole.dev-logo.png"></p>
 
 # [Porthole](https://porthole.dev/)
 
