@@ -5,4 +5,4 @@ We make use of current implementation of WebVR through Three.js and aframe.
 
 The frontend makes use of the vue.js framework.
 
-The backend uses AWS.
+The backend uses AWS (Elastic Beanstalk).
