@@ -1,6 +1,6 @@
 {
-  "name": "client",
-  "short_name": "client",
+  "name": "Porthole",
+  "short_name": "Porthole",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
