@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navbar/>
-    <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"></v-parallax>
+    <p>This page could be removed but if have images or some sort of demo would be nice</p>
   </div>
 </template>
 
