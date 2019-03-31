@@ -1,9 +1,13 @@
 <template>
     <nav>
         <v-toolbar flat app>
-            <v-toolbar-side-icon to="/">
-                <img src="../assets/logo.png">
-            </v-toolbar-side-icon>
+            <toolbar-side-icon>
+                <v-btn icon to="/">
+                <v-avatar>
+                    <img src="../assets/logo.png">
+                </v-avatar>
+                </v-btn>
+            </toolbar-side-icon>
             <v-toolbar-title class="blue--text">
                 <span class="font-weight-light">Porthole</span>
                 <span>.tech</span>

@@ -31,14 +31,13 @@
       </v-layout>
 
        <v-layout justify-center>
-        <span class="font-weight-light">Already have an account? You can 
-          <router-link to="login">login here</router-link></span>
+        <span class="font-weight-light">
+          Already have an account? You can <router-link to="login">login here</router-link></span>
       </v-layout>
 
     </v-form>
    </v-container>
 </template>
-
 
 <script>
 import firebase from 'firebase'
@@ -61,7 +60,7 @@ export default {
         },
         (err) => {
           this.$swal.fire({
-            type:'error',
+            type: 'error',
             title: 'Oops...',
             text: err.message
           })

@@ -30,26 +30,21 @@
       </v-btn>
       </v-layout>
 
-      <!-- <v-layout row justify-center="">
-        <span class="font-weight-light">or Login with Google</span>
-          <button @click="socialLogin" class="social-button">
-            <img alt="Google Logo" src="../assets/google-logo.png">
-          </button>
-      </v-layout> -->
       <v-layout justify-center row>
         <span class="font-weight-light">or</span>
       </v-layout>
-      
 
-<v-layout justify-center row>
-      <button @click="socialLogin" class="social-button">
-        <img alt="Google Logo" src="../assets/google-logo.png">
-      </button>
-</v-layout>
+      <v-layout justify-center row>
+        <v-btn icon @click="socialLogin">
+          <v-avatar>
+            <img src="../assets/google-logo.png">
+          </v-avatar>
+        </v-btn>
+      </v-layout>
 
       <v-layout justify-center>
-        <span class="font-weight-light">Don't have an account? You can 
-          <router-link to="sign-up">create one here</router-link></span>
+        <span class="font-weight-light">Don't have an account? You can <router-link to="sign-up">
+          create one here</router-link></span>
       </v-layout>
 
     </v-form>
@@ -83,49 +78,28 @@ export default {
         (err) => {
           // this.$swal('Oops. ' + err.message)
           this.$swal.fire({
-            type:'error',
+            type: 'error',
             title: 'Oops...',
             text: err.message
           })
         }
       )
     },
-    socialLogin() {
-        const provider = new firebase.auth.GoogleAuthProvider();
-
-        firebase.auth().signInWithPopup(provider).then((result) => {
-          this.$router.replace('dashboard');
-        }).catch((err) => {
-          this.$swal.fire({
-            type:'error',
-            title: 'Oops...',
-            text: err.message
-          })
+    socialLogin: function () {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithPopup(provider).then((result) => {
+        this.$router.replace('dashboard')
+      }).catch((err) => {
+        this.$swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: err.message
         })
-      }
+      })
+    }
   }
 }
 </script>
 
 <style scoped>
-button {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 10%;
-    cursor: pointer;
-  }
-  .social-button {
-    width: 75px;
-    background: white;
-    padding: 10px;
-    border-radius: 100%;
-    outline: 0;
-    border: 0;
-  }
-  .social-button:active {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
-  }
-  .social-button img {
-    width: 100%;
-  }
 </style>
