@@ -5,10 +5,13 @@ import router from './router'
 import './registerServiceWorker'
 // import AFrame from 'aframe'
 import firebase from 'firebase'
+import VueSweetalert2 from 'vue-sweetalert2'
 
 Vue.config.productionTip = false
 
 let app = ''
+
+Vue.use(VueSweetalert2)
 
 const config = {
   apiKey: 'AIzaSyAxbx3FrMz8rtQpcbsawdvtSnyURtzw9uI',

@@ -15,39 +15,26 @@
                 <v-icon right>exit_to_app</v-icon>
             </v-btn>
         </v-toolbar>
-        <!-- <v-navigation-drawer app v-model="drawer" class="indigo">
-            <p>test</p>
-        </v-navigation-drawer> -->
     </nav>
 </template>
 
 <script>
 
-// import firebase from 'firebase'
+import firebase from 'firebase'
 
 export default {
-  // data: () => ({
-  //   ecosystem: [
-  //     {
-  //       text: 'vuetify-loader',
-  //       href: 'https://github.com/vuetifyjs/vuetify-loader'
-  //     }
-  //   ],
-  //   importantLinks: [
-  //     {
-  //       text: 'Documentation',
-  //       href: 'https://vuetifyjs.com'
-  //     }
-  //   ]
-  // }),
-  // components: {},
-  // methods: {
-  //   logout: function () {
-  //     firebase.auth().signOut().then(() => {
-  //       this.$router.replace('login')
-  //     })
-  //   }
-  // }
+  name: 'dashboard',
+  methods: {
+    logout: function () {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('login')
+      })
+    }
+  },
+  data () {
+    return {
+    }
+  }
 }
 </script>
 

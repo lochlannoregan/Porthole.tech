@@ -1,13 +1,44 @@
 <template>
-  <div class="sign-up">
+  <v-container grid-list-xs>
     <Navbar/>
-    <p>Let's create a new account !</p>
-    <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br>
-    <button @click="signUp">Sign Up</button>
-    <span>or go back to <router-link to="/login">login</router-link>.</span>
-  </div>
+    <v-form>
+      <v-layout row justify-center>
+        <v-flex xs6 md3>
+          <v-text-field
+            v-model="email"
+            label="Email"
+            required
+          ></v-text-field>
+        </v-flex>
+      </v-layout>
+
+      <v-layout row justify-center>
+      <v-flex xs6 md3>
+        <v-text-field
+        v-model="password"
+        :type="'password'"
+        label="Password"
+        required></v-text-field>
+        </v-flex>
+      </v-layout>
+
+      <v-layout justify-center>
+      <v-btn
+        color="blue white--text"
+        @click="signUp" center>
+        Sign Up
+      </v-btn>
+      </v-layout>
+
+       <v-layout justify-center>
+        <span class="font-weight-light">Already have an account? You can 
+          <router-link to="login">login here</router-link></span>
+      </v-layout>
+
+    </v-form>
+   </v-container>
 </template>
+
 
 <script>
 import firebase from 'firebase'
@@ -29,7 +60,11 @@ export default {
           this.$router.replace('dashboard')
         },
         (err) => {
-          alert('Oops. ' + err.message)
+          this.$swal.fire({
+            type:'error',
+            title: 'Oops...',
+            text: err.message
+          })
         }
       )
     }
@@ -38,22 +73,4 @@ export default {
 </script>
 
  <style scoped>
-  .sign-up {
-    margin-top: 40px;
-  }
-  input {
-    margin: 10px 0;
-    width: 20%;
-    padding: 15px;
-  }
-  button {
-    margin-top: 10px;
-    width: 10%;
-    cursor: pointer;
-  }
-  span {
-    display: block;
-    margin-top: 20px;
-    font-size: 11px;
-  }
 </style>

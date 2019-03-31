@@ -1,20 +1,16 @@
 <template>
   <div class="home">
     <Navbar/>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <button @click="logout">Logout</button>
+    <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"></v-parallax>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 import Navbar from '@/components/Navbar.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
     Navbar
   }
 }

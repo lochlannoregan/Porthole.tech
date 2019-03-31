@@ -1,7 +1,6 @@
 <template>
     <nav>
         <v-toolbar flat app>
-            <v-toolbar-side-icon class="blue--text" @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-side-icon to="/">
                 <img src="../assets/logo.png">
             </v-toolbar-side-icon>
@@ -17,18 +16,10 @@
                 <span>Sign Up</span>
             </v-btn>
         </v-toolbar>
-        <v-navigation-drawer app v-model="drawer" class="indigo">
-            <p>test</p>
-        </v-navigation-drawer>
     </nav>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      drawer: false
-    }
-  }
 }
 </script>
