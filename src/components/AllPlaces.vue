@@ -29,6 +29,11 @@
                 <v-list-tile-content>Description:</v-list-tile-content>
                 <v-list-tile-content class="align-end">{{ props.item.description }}</v-list-tile-content>
               </v-list-tile>
+              <v-list-tile>
+                <v-btn flat color="blue light" @click="deletePlace(props.item.identifier)">
+                <v-icon right>delete</v-icon>
+            </v-btn>
+              </v-list-tile>
             </v-list>
           </v-card>
           <br><br>
@@ -50,10 +55,25 @@ import firebase from 'firebase'
       },
       items: [ ]
     }),
+     methods: {
+    deletePlace: function (identifier) {
+      console.log(identifier)
+      var user = firebase.auth().currentUser
+      var userDirectory = user.email
+      const db = firebase.firestore()
+      db.collection(userDirectory).doc(identifier).delete().then(function() {
+        console.log("Document deleted successfully")
+      }).catch(function(error) {
+        console.error("Error removing documents", error)
+      })
+    }
+  },
     created: function () {
+      var user = firebase.auth().currentUser
+      var userDirectory = user.email
       const db = firebase.firestore()
       var itemsLink = this.items
-      db.collection("ljoregan@gmail.com").get().then(function(querySnapshot) {
+      db.collection(userDirectory).get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
           itemsLink.push({identifier: doc.id, placeName: doc.data().placeName, imageLocation: doc.data().imageLocation, description: doc.data().description})
         })
