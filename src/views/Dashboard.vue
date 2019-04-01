@@ -1,13 +1,11 @@
 <template>
 <div id="dashboard">
         <v-toolbar flat app>
-            <toolbar-side-icon>
-                <v-btn icon to="/">
-                <v-avatar>
-                    <img src="../assets/logo.png">
-                </v-avatar>
-                </v-btn>
-            </toolbar-side-icon>
+              <v-btn icon to="/">
+              <v-avatar>
+                  <img src="../assets/logo.png">
+              </v-avatar>
+              </v-btn>
             <v-toolbar-title class="blue--text">
                 <span class="font-weight-light">Porthole</span>
                 <span>.tech</span>
@@ -18,9 +16,6 @@
                 <v-icon right>exit_to_app</v-icon>
             </v-btn>
         </v-toolbar>
-    
-
-    
 
 <v-dialog
       v-model="dialog"
@@ -72,6 +67,12 @@
         </v-flex>
       </v-layout>
 
+      <v-layout row >
+      <v-flex md9>
+        <upload-btn></upload-btn>
+        </v-flex>
+      </v-layout>
+
         </v-card-text>
 
         <v-divider></v-divider>
@@ -81,7 +82,7 @@
           <v-btn
             color="primary"
             flat
-            @click="dialog = false"
+            @click="addPlace"
           >
             Add Place
           </v-btn>
@@ -98,12 +99,14 @@
 
 import firebase from 'firebase'
 import AllPlaces from '@/components/AllPlaces.vue'
+import UploadButton from 'vuetify-upload-button';
 
 export default {
   name: 'dashboard',
   data () {
     return {
-      dialog: false
+      dialog: false,
+      placeName: ''
     }
   },
   methods: {
@@ -113,10 +116,10 @@ export default {
       })
     },
     addPlace: function () {
-      dialog = false
+      this.dialog = false
     }
   },
-  components: { AllPlaces }
+  components: { AllPlaces, 'upload-btn': UploadButton }
 }
 </script>
 
