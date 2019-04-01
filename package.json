@@ -1,6 +1,6 @@
 {
   "name": "Porthole.tech",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -16,7 +16,8 @@
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vue-sweetalert2": "^1.6.4",
-    "vuetify": "^1.5.5"
+    "vuetify": "^1.5.5",
+    "vuetify-upload-button": "^1.2.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
