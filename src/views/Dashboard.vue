@@ -55,8 +55,8 @@
       <v-layout row >
       <v-flex md9>
         <v-textarea
-          name="input-7-1"
           label="Description"
+          v-model="description"
           value=""
           hint="This image reminds me..."
           maxlength="750"
@@ -65,21 +65,49 @@
         </v-flex>
       </v-layout>
 
-        <v-layout row>
+       <v-layout row >
+        <v-flex md9>
+          <v-text-field
+            v-model="latitude"
+            label="Latitude"
+            required
+            maxlength="50"
+          ></v-text-field>
+        </v-flex>
+      </v-layout>
+
+       <v-layout row >
+        <v-flex md9>
+          <v-text-field
+            v-model="longitude"
+            label="Longitude"
+            required
+            maxlength="50"
+          ></v-text-field>
+        </v-flex>
+      </v-layout>
+
+      <!-- <v-layout row>
+        <span class="font-weight-light">Manually enter location:</span>
+          <v-checkbox @click="manuallyEnterGeoCoords = !manuallyEnterGeoCoords">
+          </v-checkbox>
+      </v-layout> -->
+
+          <v-layout row justify-end>
           <v-flex md9>
             <upload-btn :fileChangedCallback="onChange" accept="image/jpeg">
             </upload-btn>
           </v-flex>
         </v-layout>
 
-      <v-layout row>
+      <!-- <v-layout row>
           <v-flex md9>
             <v-avatar>
                   <img id="imgUpload" src="">
             </v-avatar>
           </v-flex>
-        </v-layout>
-
+        </v-layout> -->
+      
         </v-card-text>
 
         <v-divider></v-divider>
@@ -113,7 +141,11 @@ export default {
   data () {
     return {
       dialog: false,
-      placeName: ''
+      manuallyEnterGeoCoords: false,
+      placeName: '',
+      description: '',
+      latitude: '',
+      longitude: ''
     }
   },
   methods: {
@@ -124,6 +156,7 @@ export default {
     },
     addPlace: function () {
       this.dialog = false
+
     },
     onChange (image) {
       console.log('New picture selected!')

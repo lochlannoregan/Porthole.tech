@@ -8,6 +8,9 @@ import firebase from 'firebase'
 import VueSweetalert2 from 'vue-sweetalert2'
 import Ripple from 'vue-ripple-directive'
 
+Ripple.color = 'rgba(255, 255, 255, 0)'
+Ripple.zIndex = 100
+
 Vue.directive('ripple', Ripple)
 
 Vue.config.productionTip = false
