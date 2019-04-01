@@ -4,7 +4,6 @@
       :items="items"
       :rows-per-page-items="rowsPerPageItems"
       :pagination.sync="pagination"
-      content-tag="v-layout"
       row
       wrap
     >
@@ -16,39 +15,24 @@
           lg3
         >
           <v-card>
-            <v-card-title><h4>{{ props.item.name }}</h4></v-card-title>
+            <v-card-title><h4>{{ props.item.placeName }}</h4></v-card-title>
             <v-divider></v-divider>
-            <v-list dense>
+            <v-list>
               <v-list-tile>
-                <v-list-tile-content>Calories:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ props.item.calories }}</v-list-tile-content>
+                <v-list-tile-content>Image:</v-list-tile-content>
+                <v-list-tile-content class="align-end">
+                <v-avatar>
+                <img src="https://firebasestorage.googleapis.com/v0/b/porthole-2c2a5.appspot.com/o/image.jpg?alt=media&token=9da6127f-b6f5-48b4-8fd9-9d6f7f21ab9e">
+                </v-avatar>
+                </v-list-tile-content>
               </v-list-tile>
               <v-list-tile>
-                <v-list-tile-content>Fat:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ props.item.fat }}</v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>Carbs:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ props.item.carbs }}</v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>Protein:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ props.item.protein }}</v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>Sodium:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ props.item.sodium }}</v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>Calcium:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ props.item.calcium }}</v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>Iron:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ props.item.iron }}</v-list-tile-content>
+                <v-list-tile-content>Description:</v-list-tile-content>
+                <v-list-tile-content class="align-end">{{ props.item.description }}</v-list-tile-content>
               </v-list-tile>
             </v-list>
           </v-card>
+          <br><br>
         </v-flex>
       </template>
     </v-data-iterator>
@@ -56,6 +40,9 @@
 </template>
 
 <script>
+
+import firebase from 'firebase'
+
   export default {
     data: () => ({
       rowsPerPageItems: [4, 8, 12],
@@ -64,104 +51,39 @@
       },
       items: [
         {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          protein: 4.0,
-          sodium: 87,
-          calcium: '14%',
-          iron: '1%'
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          sodium: 129,
-          calcium: '8%',
-          iron: '1%'
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          sodium: 337,
-          calcium: '6%',
-          iron: '7%'
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          sodium: 413,
-          calcium: '3%',
-          iron: '8%'
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          sodium: 327,
-          calcium: '7%',
-          iron: '16%'
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          sodium: 50,
-          calcium: '0%',
-          iron: '0%'
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          sodium: 38,
-          calcium: '0%',
-          iron: '2%'
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          sodium: 562,
-          calcium: '0%',
-          iron: '45%'
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          sodium: 326,
-          calcium: '2%',
-          iron: '22%'
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          sodium: 54,
-          calcium: '12%',
-          iron: '6%'
         }
       ]
-    })
+    }),
+    created: function () {
+      const app = firebase.app();
+      const db = firebase.firestore()
+     
+      db.collection("ljoregan@gmail.com").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          console.log("got one!")
+          var gotPlaceName = doc.data().placeName
+          var gotImageLocation = doc.data().imageLocation
+          var gotDescription = doc.data().description
+          console.log(gotPlaceName + " " + gotImageLocation + " " + gotDescription)
+          // console.log(this.items.push({placeName: gotPlaceName, imageLocation: gotImageLocation, description: gotDescription}))
+        })
+      })
+
+    //  docRef.get().then(function(doc) {
+    //    if (doc.exists) {
+    //      console.log("existis")
+    //     // this.items.push({placeName: doc.placeName, imageLocation: doc.imageLocation, description: doc.description})
+    //    } else {
+    //      console.log("no such document")
+    //    }
+    //  }).catch(function (error) {
+    //    console.log("Error getting document", error)
+    //  })
+      
+      // console.log("this page was created")
+      // console.log(this.items[0])
+      // console.log(this.items.push({placeName: 'French Hill', description: 'Other hill', imageLocation: 'google.com'}))
+      // console.log(this.items[1])
+    }
   }
   </script>
