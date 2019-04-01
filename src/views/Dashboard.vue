@@ -26,9 +26,8 @@
               color="pink"
               dark
               small
-              absolute
               top
-              right
+              left
               fab
             v-on="on">
               <v-icon>add</v-icon>
@@ -62,16 +61,24 @@
           hint="This image reminds me..."
           maxlength="750"
           auto-grow
-          counter
-></v-textarea>
+          counter></v-textarea>
         </v-flex>
       </v-layout>
 
-      <v-layout row >
-      <v-flex md9>
-        <upload-btn></upload-btn>
-        </v-flex>
-      </v-layout>
+        <v-layout row>
+          <v-flex md9>
+            <upload-btn :fileChangedCallback="onChange" accept="image/jpeg">
+            </upload-btn>
+          </v-flex>
+        </v-layout>
+
+      <v-layout row>
+          <v-flex md9>
+            <v-avatar>
+                  <img id="imgUpload" src="">
+            </v-avatar>
+          </v-flex>
+        </v-layout>
 
         </v-card-text>
 
@@ -90,7 +97,7 @@
       </v-card>
 </v-dialog>
 
-<!-- <AllPlaces/> -->
+<AllPlaces/>
 
 </div>
 </template>
@@ -99,7 +106,7 @@
 
 import firebase from 'firebase'
 import AllPlaces from '@/components/AllPlaces.vue'
-import UploadButton from 'vuetify-upload-button';
+import UploadButton from 'vuetify-upload-button'
 
 export default {
   name: 'dashboard',
@@ -117,6 +124,25 @@ export default {
     },
     addPlace: function () {
       this.dialog = false
+    },
+    onChange (image) {
+      console.log('New picture selected!')
+      if (image) {
+        console.log('Picture loaded.')
+        this.image = image
+        const storageRef = firebase.storage().ref()
+        const imageRef = storageRef.child('image.jpg')
+        const task = imageRef.put(image)
+
+        task.then(snapshot => {
+          console.log(snapshot)
+          const url = snapshot.downloadURL
+          document.querySelector('#imgUpload').setAttribute('src', url)
+        })
+
+      } else {
+        console.log('FileReader API not supported: use the <form>, Luke!')
+      }
     }
   },
   components: { AllPlaces, 'upload-btn': UploadButton }

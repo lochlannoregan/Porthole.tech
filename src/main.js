@@ -6,6 +6,9 @@ import './registerServiceWorker'
 // import AFrame from 'aframe'
 import firebase from 'firebase'
 import VueSweetalert2 from 'vue-sweetalert2'
+import Ripple from 'vue-ripple-directive'
+
+Vue.directive('ripple', Ripple)
 
 Vue.config.productionTip = false
 
