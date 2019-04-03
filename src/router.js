@@ -41,7 +41,7 @@ const router = new Router({
       component: SignUp
     },
     {
-      path: '/place/:id',
+      path: '/:id',
       name: 'Place',
       component: Place,
       meta: {
