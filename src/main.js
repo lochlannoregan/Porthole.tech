@@ -3,7 +3,6 @@ import './plugins/vuetify'
 import App from './App.vue'
 import router from './router'
 import './registerServiceWorker'
-// import AFrame from 'aframe'
 import firebase from 'firebase'
 import VueSweetalert2 from 'vue-sweetalert2'
 import Ripple from 'vue-ripple-directive'
@@ -14,6 +13,17 @@ Ripple.zIndex = 100
 Vue.directive('ripple', Ripple)
 
 Vue.config.productionTip = false
+
+Vue.config.ignoredElements = [
+  'a-scene',
+  'a-entity',
+  'a-plane',
+  'a-sky',
+  'a-plane',
+  'a-sphere',
+  'a-box',
+  'a-cylinder'
+]
 
 let app = ''
 
