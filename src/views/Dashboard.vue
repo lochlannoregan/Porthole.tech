@@ -164,7 +164,11 @@ export default {
           console.error('Error adding document: ', error)
         })
       this.dialog = false
-      // this.$root.$emit('AllPlaces').$forceUpdate()
+      this.placeName = ''
+      this.description = ''
+      this.imageLocation = ''
+      this.latitude = ''
+      this.longitude = ''
     },
     onChange: function (file) {
       const uuidv4 = require('uuid/v4')
