@@ -8,17 +8,17 @@
         <h4>Latitude: {{ this.place[3] }} </h4>
         <h4>Longitude: {{ this.place[4] }} </h4>
 
-         <!-- <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
-    </a-scene> -->
-
-    <a-scene>
-                        <a-sky :src='place[1]'></a-sky>
-                    </a-scene>
+      <v-layout>
+        <l-map style="height: 600px; width: 600px" :zoom="zoom" :center="center">
+    <l-tile-layer :url="url"></l-tile-layer>
+    <l-marker :lat-lng="markerLatLng" >
+      <l-tooltip>{{this.place[0]}}</l-tooltip>
+    </l-marker>
+  </l-map>
+      <!-- <a-scene>
+        <a-sky :src='place[1]'></a-sky>
+      </a-scene> -->
+      </v-layout>
 
     </div>
 </template>
@@ -34,7 +34,11 @@ export default {
   data () {
     return {
       id: 0,
-      place: [ ]
+      place: [ ],
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      zoom: 3,
+      center: [47.413220, -1.219482],
+      markerLatLng: [47.313220, -1.319482]
     }
   },
   methods: {

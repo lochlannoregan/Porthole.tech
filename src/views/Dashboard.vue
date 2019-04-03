@@ -81,7 +81,7 @@
 
           <v-layout row justify-end>
           <v-flex md9>
-            <upload-btn title="Upload Photo" :fileChangedCallback="onChange" accept="image/jpeg">
+            <upload-btn title="Upload 360 Photo" :fileChangedCallback="onChange" accept="image/jpeg">
             </upload-btn>
           </v-flex>
         </v-layout>
