@@ -61,7 +61,8 @@ export default {
       pagination: {
         rowsPerPage: 4
       },
-      items: [ ]
+      items: [ ],
+      componentKey: 0
     }
   },
   methods: {
@@ -75,10 +76,11 @@ export default {
       }).catch(function (error) {
         console.error('Error removing documents', error)
       })
-      // this.$forceUpdate()
+      this.componentKey += 1
+      console.log(this.componentKey)
     }
   },
-  created: function () {
+  mounted: function () {
     var user = firebase.auth().currentUser
     var userDirectory = user.email
     const db = firebase.firestore()
@@ -88,6 +90,7 @@ export default {
         itemsLink.push({ identifier: doc.id, placeName: doc.data().placeName, imageLocation: doc.data().imageLocation, description: doc.data().description })
       })
     })
+    // console.log("I've loaded in the places")
   }
 }
 </script>
