@@ -126,15 +126,17 @@
 </v-dialog>
 
 <AllPlaces/>
+<Place/>
 
 </div>
 </template>
 
 <script>
 
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import AllPlaces from '@/components/AllPlaces.vue'
 import UploadButton from 'vuetify-upload-button'
+import Place from '@/components/Place.vue'
 
 export default {
   name: 'dashboard',
@@ -182,9 +184,12 @@ export default {
           console.error('Error adding document: ', error)
         })
       this.dialog = false
+      this.$root.$emit('AllPlaces').$forceUpdate()
     },
     onChange: function (file) {
-      this.imageLocation = file.name
+      const uuidv4 = require('uuid/v4')
+      const fileName = uuidv4()
+      this.imageLocation = fileName
       var user = firebase.auth().currentUser
       var userDirectory = user.email
       if (userDirectory === null) {
@@ -197,7 +202,7 @@ export default {
 
       const storageRef = firebase.storage().ref()
       // Upload file and metadata to the object 'images/mountains.jpg'
-      var uploadTask = storageRef.child(userDirectory + '/' + file.name).put(file, metadata)
+      var uploadTask = storageRef.child(userDirectory + '/' + fileName).put(file, metadata)
 
       // Listen for state changes, errors, and completion of the upload.
       uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
@@ -228,7 +233,7 @@ export default {
         })
     }
   },
-  components: { AllPlaces, 'upload-btn': UploadButton }
+  components: { AllPlaces, Place, 'upload-btn': UploadButton }
 }
 </script>
 

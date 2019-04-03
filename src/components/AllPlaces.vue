@@ -32,7 +32,13 @@
               <v-list-tile>
                 <v-btn flat color="blue light" @click="deletePlace(props.item.identifier)">
                 <v-icon right>delete</v-icon>
-            </v-btn>
+                </v-btn>
+                <v-btn flat color="blue light">
+                <v-icon right>edit</v-icon>
+                </v-btn>
+                <v-btn flat color="blue light" @click="openPlace(props.item.imageLocation)">
+                <v-icon right>open_in_new</v-icon>
+                </v-btn>
               </v-list-tile>
             </v-list>
           </v-card>
@@ -45,39 +51,50 @@
 
 <script>
 
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 
-  export default {
-    data: () => ({
+export default {
+  name: 'AllPlaces',
+  data () {
+    return {
       rowsPerPageItems: [4, 8, 12],
       pagination: {
         rowsPerPage: 4
       },
       items: [ ]
-    }),
-     methods: {
+    }
+  },
+  methods: {
     deletePlace: function (identifier) {
       console.log(identifier)
       var user = firebase.auth().currentUser
       var userDirectory = user.email
       const db = firebase.firestore()
-      db.collection(userDirectory).doc(identifier).delete().then(function() {
-        console.log("Document deleted successfully")
-      }).catch(function(error) {
-        console.error("Error removing documents", error)
+      db.collection(userDirectory).doc(identifier).delete().then(function () {
+        console.log('Document deleted successfully')
+      }).catch(function (error) {
+        console.error('Error removing documents', error)
       })
+      // this.$forceUpdate()
     }
   },
-    created: function () {
-      var user = firebase.auth().currentUser
-      var userDirectory = user.email
-      const db = firebase.firestore()
-      var itemsLink = this.items
-      db.collection(userDirectory).get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          itemsLink.push({identifier: doc.id, placeName: doc.data().placeName, imageLocation: doc.data().imageLocation, description: doc.data().description})
-        })
+  created: function () {
+    var user = firebase.auth().currentUser
+    var userDirectory = user.email
+    const db = firebase.firestore()
+    var itemsLink = this.items
+    db.collection(userDirectory).get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        itemsLink.push({ identifier: doc.id, placeName: doc.data().placeName, imageLocation: doc.data().imageLocation, description: doc.data().description })
       })
+    })
   }
+//  mounted: function() {
+//    this.$root.$on('AllPlaces', function(){
+//     this.forceTheUpdate()
+//     console.log("first bit has been called")
+//    })
+//    this.forceTheUpdate()
+//  }
 }
 </script>
