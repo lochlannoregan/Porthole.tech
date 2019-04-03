@@ -1,20 +1,43 @@
 {
-    "name": "myfirstexpressap",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "start": "node ./bin/www"
-    },
-    "dependencies": {
-        "bcrypt-nodejs": "latest",
-        "clean": "^4.0.2",
-        "cookie-parser": "~1.4.3",
-        "debug": "~2.6.9",
-        "express": "~4.16.0",
-        "hbs": "^4.0.2",
-        "http-errors": "~1.6.2",
-        "jsonwebtoken": "^8.4.0",
-        "mongoose": "~5.4.16",
-        "morgan": "~1.9.0"
-    }
+  "name": "Porthole.tech",
+  "version": "0.1.2",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "aframe": "^0.9.0",
+    "firebase": "^5.9.2",
+    "register-service-worker": "^1.6.2",
+    "uuid": "^3.3.2",
+    "vue": "^2.6.6",
+    "vue-ripple-directive": "^2.0.1",
+    "vue-router": "^3.0.1",
+    "vue-sweetalert2": "^1.6.4",
+    "vuetify": "^1.5.5",
+    "vuetify-upload-button": "^1.2.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-e2e-cypress": "^3.5.0",
+    "@vue/cli-plugin-eslint": "^3.5.0",
+    "@vue/cli-plugin-pwa": "^3.5.0",
+    "@vue/cli-plugin-unit-mocha": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.1.2",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-cli-plugin-vuetify": "^0.5.0",
+    "vue-template-compiler": "^2.5.21",
+    "vuetify-loader": "^1.0.5"
+  }
 }
