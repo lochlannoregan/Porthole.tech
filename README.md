@@ -1,5 +1,5 @@
 
-### <p align="center"> ![portholelogo](\docs\porthole.tech-logo.png)</p>
+### <p align="center"> ![](docs/porthole.tech-logo.png)</p>
 
 
 # Porthole.tech 
