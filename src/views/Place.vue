@@ -2,7 +2,11 @@
     <div id="place">
         <UserNavbar/>
 
-        <h1>{{ this.place[0] }} </h1>
+        <h3>Place Name: {{ this.place[0] }} </h3>
+        <h3>Image Location: <a :href="place[1]">See it</a></h3>
+        <h4>Description: {{ this.place[2] }} </h4>
+        <h4>Latitude: {{ this.place[3] }} </h4>
+        <h4>Longitude: {{ this.place[4] }} </h4>
 
     </div>
 </template>
