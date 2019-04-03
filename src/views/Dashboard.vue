@@ -1,21 +1,7 @@
 <template>
 <div id="dashboard">
-        <v-toolbar flat app>
-              <v-btn icon to="/">
-              <v-avatar>
-                  <img src="../assets/logo.png">
-              </v-avatar>
-              </v-btn>
-            <v-toolbar-title class="blue--text">
-                <span class="font-weight-light">Porthole</span>
-                <span>.tech</span>
-            </v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-btn flat color="blue light" @click="logout">
-                <span>Logout</span>
-                <v-icon right>exit_to_app</v-icon>
-            </v-btn>
-        </v-toolbar>
+
+<UserNavbar/>
 
 <v-dialog
       v-model="dialog"
@@ -126,7 +112,6 @@
 </v-dialog>
 
 <AllPlaces/>
-<Place/>
 
 </div>
 </template>
@@ -135,8 +120,8 @@
 
 import firebase from 'firebase/app'
 import AllPlaces from '@/components/AllPlaces.vue'
+import UserNavbar from '@/components/UserNavbar.vue'
 import UploadButton from 'vuetify-upload-button'
-import Place from '@/components/Place.vue'
 
 export default {
   name: 'dashboard',
@@ -152,11 +137,6 @@ export default {
     }
   },
   methods: {
-    logout: function () {
-      firebase.auth().signOut().then(() => {
-        this.$router.replace('login')
-      })
-    },
     addPlace: function () {
       var user = firebase.auth().currentUser
       var userDirectory = user.email
@@ -184,7 +164,7 @@ export default {
           console.error('Error adding document: ', error)
         })
       this.dialog = false
-      this.$root.$emit('AllPlaces').$forceUpdate()
+      // this.$root.$emit('AllPlaces').$forceUpdate()
     },
     onChange: function (file) {
       const uuidv4 = require('uuid/v4')
@@ -233,7 +213,7 @@ export default {
         })
     }
   },
-  components: { AllPlaces, Place, 'upload-btn': UploadButton }
+  components: { AllPlaces, 'upload-btn': UploadButton, UserNavbar }
 }
 </script>
 

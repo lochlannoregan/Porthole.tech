@@ -36,7 +36,7 @@
                 <v-btn flat color="blue light">
                 <v-icon right>edit</v-icon>
                 </v-btn>
-                <v-btn flat color="blue light" @click="openPlace(props.item.imageLocation)">
+                <v-btn flat color="blue light" :to="{ name: 'Place', params: { id: props.item.identifier } }">
                 <v-icon right>open_in_new</v-icon>
                 </v-btn>
               </v-list-tile>
@@ -54,7 +54,7 @@
 import firebase from 'firebase/app'
 
 export default {
-  name: 'AllPlaces',
+  name: 'allplaces',
   data () {
     return {
       rowsPerPageItems: [4, 8, 12],
@@ -89,12 +89,5 @@ export default {
       })
     })
   }
-//  mounted: function() {
-//    this.$root.$on('AllPlaces', function(){
-//     this.forceTheUpdate()
-//     console.log("first bit has been called")
-//    })
-//    this.forceTheUpdate()
-//  }
 }
 </script>
