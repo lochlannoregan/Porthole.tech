@@ -57,7 +57,9 @@
             v-model="latitude"
             label="Latitude"
             required
-            maxlength="50"
+            maxlength="10"
+            prepend-inner-icon="place"
+            type="number"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -68,7 +70,9 @@
             v-model="longitude"
             label="Longitude"
             required
-            maxlength="50"
+            maxlength="10"
+            prepend-inner-icon="place"
+            type="number"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -162,6 +166,8 @@
     </v-data-iterator>
   </v-container>
 
+<v-btn @click="Testingstuff">Testing</v-btn>
+
 </div>
 </template>
 
@@ -176,24 +182,31 @@ export default {
   data () {
     return {
       dialog: false,
-      manuallyEnterGeoCoords: false,
       placeName: '',
       description: '',
       imageLocation: 'testingImageLocation',
-      latitude: '',
-      longitude: '',
+      latitude: 0,
+      longitude: 0,
       rowsPerPageItems: [4, 8, 12],
       pagination: {
         rowsPerPage: 4
       },
-      items: []
+      items: [ ],
+      keyComponent: 0
     }
   },
   methods: {
+    Testingstuff: function () {
+      console.log(this.items[0].imageLocation)
+    },
     addPlace: function () {
       var user = firebase.auth().currentUser
       var userDirectory = user.email
       const db = firebase.firestore()
+      var placesLink = this.items
+      // var placeNameCopy = this.placeName
+      // var descriptionCopy = this.description
+      // var imageLocationCopy = this.imageLocation
       db.collection(userDirectory).add({
         placeName: this.placeName,
         description: this.description,
@@ -209,19 +222,41 @@ export default {
               console.log(downloadURL)
               db.collection(userDirectory).doc(docRef.id).update({
                 imageLocation: downloadURL
+              }).then(function () {
+                placesLink.push({ identifier: docRef.id, placeName: doc.data().placeName, imageLocation: downloadURL, description: doc.data().description })
               })
+            }).catch(function (error) {
+              // A full list of error codes is available at
+              // https://firebase.google.com/docs/storage/web/handle-errors
+              switch (error.code) {
+                case 'storage/object-not-found':
+                  // File doesn't exist
+                  break
+
+                case 'storage/unauthorized':
+                  // User doesn't have permission to access the object
+                  break
+
+                case 'storage/canceled':
+                  // User canceled the upload
+                  break
+
+                case 'storage/unknown':
+                  // Unknown error occurred, inspect the server response
+                  break
+              }
             })
           })
         })
         .catch(function (error) {
           console.error('Error adding document: ', error)
         })
-      this.dialog = false
       this.placeName = ''
       this.description = ''
       this.imageLocation = ''
       this.latitude = ''
       this.longitude = ''
+      this.dialog = false
     },
     onChange: function (file) {
       const uuidv4 = require('uuid/v4')
@@ -273,6 +308,7 @@ export default {
       console.log(identifier)
       var user = firebase.auth().currentUser
       var userDirectory = user.email
+      // var placesLink = this.items
       const db = firebase.firestore()
       db.collection(userDirectory).doc(identifier).delete().then(function () {
         console.log('Document deleted successfully')
