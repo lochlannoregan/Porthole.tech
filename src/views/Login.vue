@@ -16,8 +16,10 @@
       <v-flex xs6 md3>
         <v-text-field
         v-model="password"
-        :type="'password'"
         label="Password"
+        :append-icon="show1 ? 'visibility' : 'visibility_off'"
+        @click:append="show1 = !show1"
+        :type="show1 ? 'text' : 'password'"
         required></v-text-field>
         </v-flex>
       </v-layout>
@@ -60,12 +62,8 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
-      // rules: {
-      //   required: value => !!value || 'Required.',
-      //   min: v => v.length >= 8 || 'Min 8 characters',
-      //   emailMatch: () => ('The email and password you entered don\'t match')
-      // }
+      password: '',
+      show1: false
     }
   },
   components: { Navbar },
