@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <Navbar/>
-    <p>This page could be removed but if have images or some sort of demo would be nice</p>
+ <v-layout column align-center justify-center>
+      <h1 class="font-weight-light blue--text">Porthole.tech</h1>
+      <h4 class="blue--text">Working with 360 images</h4>
+    </v-layout>
   </div>
 </template>
 
@@ -12,6 +15,10 @@ export default {
   name: 'home',
   components: {
     Navbar
+  },
+  data () {
+    return {
+    }
   }
 }
 </script>

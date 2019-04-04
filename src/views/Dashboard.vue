@@ -21,10 +21,6 @@
       </template>
 
       <v-card>
-        <!-- <v-card-title
-          class="headline grey lighten-2"
-          primary-title
-        >Add Place</v-card-title> -->
 
         <v-card-text>
           <v-layout row >
@@ -45,7 +41,7 @@
           v-model="description"
           value=""
           hint="This image reminds me..."
-          maxlength="750"
+          maxlength="75"
           auto-grow
           counter></v-textarea>
         </v-flex>
@@ -77,26 +73,12 @@
         </v-flex>
       </v-layout>
 
-      <!-- <v-layout row>
-        <span class="font-weight-light">Manually enter location:</span>
-          <v-checkbox @click="manuallyEnterGeoCoords = !manuallyEnterGeoCoords">
-          </v-checkbox>
-      </v-layout> -->
-
-          <v-layout row justify-end>
+        <v-layout row>
           <v-flex md9>
             <upload-btn title="Upload 360 Photo" :fileChangedCallback="onChange" accept="image/jpeg">
             </upload-btn>
           </v-flex>
         </v-layout>
-
-      <!-- <v-layout row>
-          <v-flex md9>
-            <v-avatar>
-                  <img id="imgUpload" src="">
-            </v-avatar>
-          </v-flex>
-        </v-layout> -->
 
         </v-card-text>
 
@@ -123,8 +105,7 @@
       no-data-text="No places have been added. Add one by clicking the plus!"
       content-tag="v-layout"
       row
-      wrap
-      search>
+      wrap>
       <template v-slot:item="props">
         <v-flex
           xs12
@@ -136,26 +117,24 @@
             <v-divider></v-divider>
             <v-list>
               <v-list-tile>
-                <v-list-tile-content>Image:</v-list-tile-content>
-                <v-list-tile-content class="align-end">
+                <v-list-tile-content class="align-start">
                 <v-avatar>
                   <img v-bind:src="props.item.imageLocation">
                 </v-avatar>
                 </v-list-tile-content>
               </v-list-tile>
               <v-list-tile>
-                <v-list-tile-content>Description:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ props.item.description }}</v-list-tile-content>
+                <v-list-tile-content class="align-start">{{ props.item.description }}</v-list-tile-content>
               </v-list-tile>
               <v-list-tile>
-                <v-btn flat color="blue light" @click="deletePlace(props.item.identifier)">
+                <v-btn flat color="blue light" @click="deletePlace(props.item.identifier, props.index)">
                 <v-icon right>delete</v-icon>
                 </v-btn>
-                <v-btn flat color="blue light">
-                <v-icon right>edit</v-icon>
+                <v-btn flat color="blue light" :to="{ name: 'Map', params: { aframeid: props.item.identifier } }">
+                <v-icon right>360</v-icon>
                 </v-btn>
                 <v-btn flat color="blue light" :to="{ name: 'Place', params: { id: props.item.identifier } }">
-                <v-icon right>open_in_new</v-icon>
+                <v-icon right>add_location</v-icon>
                 </v-btn>
               </v-list-tile>
             </v-list>
@@ -165,8 +144,6 @@
       </template>
     </v-data-iterator>
   </v-container>
-
-<v-btn @click="Testingstuff">Testing</v-btn>
 
 </div>
 </template>
@@ -191,22 +168,15 @@ export default {
       pagination: {
         rowsPerPage: 4
       },
-      items: [ ],
-      keyComponent: 0
+      items: [ ]
     }
   },
   methods: {
-    Testingstuff: function () {
-      console.log(this.items[0].imageLocation)
-    },
     addPlace: function () {
       var user = firebase.auth().currentUser
       var userDirectory = user.email
       const db = firebase.firestore()
       var placesLink = this.items
-      // var placeNameCopy = this.placeName
-      // var descriptionCopy = this.description
-      // var imageLocationCopy = this.imageLocation
       db.collection(userDirectory).add({
         placeName: this.placeName,
         description: this.description,
@@ -219,7 +189,6 @@ export default {
           db.collection(userDirectory).doc(docRef.id).get().then(function (doc) {
             const storageRef = firebase.storage()
             storageRef.ref(userDirectory + '/' + doc.data().imageLocation).getDownloadURL().then(function (downloadURL) {
-              console.log(downloadURL)
               db.collection(userDirectory).doc(docRef.id).update({
                 imageLocation: downloadURL
               }).then(function () {
@@ -271,7 +240,6 @@ export default {
       var metadata = {
         contentType: 'image/jpeg'
       }
-
       const storageRef = firebase.storage().ref()
       // Upload file and metadata to the object 'images/mountains.jpg'
       var uploadTask = storageRef.child(userDirectory + '/' + fileName).put(file, metadata)
@@ -282,6 +250,11 @@ export default {
           // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
           var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           console.log('Upload is ' + progress + '% done')
+
+          if (progress === 100) {
+            alert('Image successfully uploaded')
+          }
+
           switch (snapshot.state) {
             case firebase.storage.TaskState.PAUSED: // or 'paused'
               console.log('Upload is paused')
@@ -304,14 +277,13 @@ export default {
           }
         })
     },
-    deletePlace: function (identifier) {
-      console.log(identifier)
+    deletePlace: function (identifier, indexOfPlace) {
       var user = firebase.auth().currentUser
       var userDirectory = user.email
-      // var placesLink = this.items
+      var placesLink = this.items
       const db = firebase.firestore()
       db.collection(userDirectory).doc(identifier).delete().then(function () {
-        console.log('Document deleted successfully')
+        placesLink.splice(indexOfPlace, 1)
       }).catch(function (error) {
         console.error('Error removing documents', error)
       })

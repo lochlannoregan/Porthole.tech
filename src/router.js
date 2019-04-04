@@ -7,6 +7,7 @@ import Dashboard from './views/Dashboard.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import Place from './views/Place.vue'
+import Map from './views/Map.vue'
 
 Vue.use(Router)
 
@@ -44,6 +45,14 @@ const router = new Router({
       path: '/:id',
       name: 'Place',
       component: Place,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/:aframeid',
+      name: 'Map',
+      component: Map,
       meta: {
         requiresAuth: true
       }
