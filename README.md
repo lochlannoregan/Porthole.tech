@@ -1,11 +1,10 @@
 
 ### <p align="center"> ![](docs/porthole.tech-logo.png)</p>
 
-The aim of this project is to store moments in time, taking advantage of modern technology.
+The aim of this project is to immerse users in saved 360 content of places and experiences using modern technology.
+We had a collective interest in WebVR and wanted to implement its immensely powerful capabilities to provide a novel experience for our users.
 
-We make use of current implementation of WebVR through Three.js and aframe.
-
-The frontend makes use of the vue.js framework.
+This project uses Vue.js, Vuetify, A-Frame and Leaflet to provide its core functionality.
 
 ## Project setup
 ```
